@@ -1,0 +1,50 @@
+server:
+  config:
+    configManagementPlugins: |
+      - name: sops
+        init:
+          command: ["/bin/sh", "-c"]
+          args: ["if [ -f 'secrets.enc' ]; then echo '---' > secrets.yaml && sops -d --input-type yaml --output-type yaml secrets.enc >> secrets.yaml; fi"]
+        generate:
+          command: ["/bin/sh", "-c"]
+          args: ["cat *.yaml | yq"]
+repoServer:
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+    - name: kms-sa
+      secret:
+        secretName: kms-sa
+        items:
+          - key: sa.json
+            path: sa.json
+  volumeMounts:
+    - mountPath: /usr/local/bin/sops  
+      name: custom-tools
+      subPath: sops
+    - mountPath: /usr/local/bin/jq
+      name: custom-tools
+      subPath: jq
+    - mountPath: /usr/local/bin/yq
+      name: custom-tools
+      subPath: yq
+    - mountPath: /etc/secrets/sa.json
+      name: kms-sa
+      subPath: sa.json
+  env:
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: /etc/secrets/sa.json
+  initContainers:
+    - name: custom-tools
+      image: alpine:3.8
+      command: ["/bin/sh", "-c"]
+      args:
+        - wget https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux.amd64 -O /custom-tools/sops;
+          chmod a+x /custom-tools/sops;
+          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /custom-tools/jq;
+          chmod a+x /custom-tools/jq;
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /custom-tools/yq;
+          chmod +x /custom-tools/yq;
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools

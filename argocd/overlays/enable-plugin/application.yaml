@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plugin-demo
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: custom
+  project: default
+  source:
+    path: argocd/manifests/plugin-example
+    plugin:
+      env:
+      - name: FOO
+        value: bar
+    repoURL: https://github.com/srivasthava/argocd-cmp.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
