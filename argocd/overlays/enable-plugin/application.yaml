@@ -9,7 +9,7 @@ spec:
     namespace: custom
   project: default
   source:
-    path: argocd/manifests/plugin-example
+    path: argocd/manifests/plugin-app
     plugin:
       env:
       - name: FOO
