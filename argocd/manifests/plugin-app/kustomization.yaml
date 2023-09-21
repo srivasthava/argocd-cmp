@@ -3,9 +3,9 @@ kind: Kustomization
 
 namespace: custom
 
-bases:
-  - base/demo-pod.yaml
-
-# resourses:
-#   - namespace.yaml
+# bases:
 #   - base/demo-pod.yaml
+
+resources:
+  - namespace.yaml
+  - base/demo-pod.yaml
