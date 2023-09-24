@@ -23,7 +23,7 @@ spec:
               name: cmp-plugin
             - mountPath: /tmp
               name: tmp
-          volumeMounts:
+        
             - mountPath: /usr/local/bin/sops
               name: custom-tools
               subPath: sops
@@ -33,6 +33,9 @@ spec:
             - mountPath: /usr/local/bin/yq
               name: custom-tools
               subPath: yq
+
+            - mountPath: /custom-tools
+              name: custom-tools
 
       volumes:
         - name: cmp-plugin
@@ -59,4 +62,5 @@ spec:
           volumeMounts:
             - mountPath: /custom-tools
               name: custom-tools
+      
           
