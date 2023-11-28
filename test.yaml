@@ -19630,6 +19630,9 @@ spec:
         securityContext:
           runAsNonRoot: true
           runAsUser: 999
+      - configMap:
+          name: cmp-plugin
+        name: cmp-plugin
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
