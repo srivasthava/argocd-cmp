@@ -9,4 +9,4 @@ namespace: custom
 resources:
   - namespace.yaml
   - demo-pod.yaml
-  - secrets.enc.yaml
+  #- secrets.enc.yaml

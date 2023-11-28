@@ -14,7 +14,7 @@ spec:
       env:
       - name: Srivasta
         value: Good Man
-      name : cmp-sops
+      name : cmp-plugin
     repoURL: https://github.com/srivasthava/argocd-cmp.git
     targetRevision: HEAD
   syncPolicy:
