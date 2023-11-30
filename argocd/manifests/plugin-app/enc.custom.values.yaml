@@ -1,0 +1,18 @@
+username: ENC[AES256_GCM,data:8VbSIDEzZoIrlCry,iv:mI6Bx/JjOtEnrg4mIN9YHg+b4EgvoBAAH70RqFAxELs=,tag:ZmoC+iS4kPu4+83+zfrmcw==,type:str]
+password: ENC[AES256_GCM,data:dTqIYDMKsWECo8Dl,iv:+ff1NPOSQMEtGds3ireUnN3w3bhyUrKiZdGAB/iH6yQ=,tag:2rEuXR8IXYZi5zwGSw4+TQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv:
+        - vault_url: https://kv-dev-vault2.vault.azure.net
+          name: sops-key
+          version: d4ebd9c3cd874fe591d826cccad7f8ca
+          created_at: "2023-09-18T19:53:43Z"
+          enc: oceKZ_gknOhQedRjWng94vBs9HKG64ITXFOwuMTBtNxaI41_XvMlTidq-qJpl_4k-bikEwpX1-U5foAzIhX54iRq-1bdC3lCqd04NER2p3qsh6hHJmA5dsRlKedQKwqRl0fPD78bxmtbd2lJ1_vHjOCR1lo3Ham35QBKjdw-jRnMuOnLj9d7hOwdY5mXxwFylV6gVDganOyuBMadNiyQxoZ5-u2gRpd-3cggs69T0LrV_Mbd4jxMFftU6Pw4NzYWJC6acMEtgHNF5Zgmex_Ma_aYUULFR5YkIekpF20OATBruJA6jaSObYprnrc1scxgYMZ7IEBIhgo6lH3U1FlKmg
+    hc_vault: []
+    age: []
+    lastmodified: "2023-09-18T19:53:45Z"
+    mac: ENC[AES256_GCM,data:43brGaj5ZsXbtLWxaWgjNrD3LVCwbscXj5dLRfesdWjoFyOtbOTtlY4xCPpN/GQ6poIFKwA98u6kVQV92pL2aqpxS5caj9WsG/jh8BK0RORAyUsohPVeu1hTNvJpV4FBxdFPr7J60xkfvdAYD8Pr+dWdbhNzaKtDHM+pzWPh29Q=,iv:M7T87yoW9wZF84hdV8S5ZzwlYyrBpJlsTn01SQF/huY=,tag:5SVFpaqxXKDqIr53juRxmg==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.8.0
