@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+    plugin:
+      env:
+      - name: Srivasta
+        value: Good Man
+      name : cmp-plugin
+  sources:
+    - chart: hello
+      repoURL: https://cloudecho.github.io/charts
+      targetRevision: 8.5.1
+    - repoURL: https://github.com/argoproj/argocd-example-apps.git
+      path: guestbook
+      targetRevision: HEAD
